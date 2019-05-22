@@ -1,6 +1,9 @@
 package kh.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +35,16 @@ public class TestFrontController extends HttpServlet {
 				
 				e.printStackTrace();
 			}
+		}else if(cmd.equals("/list.test")) {
+			MemberDAO dao = new MemberDAO();
+			List<MemberDTO> dtos = new ArrayList<>();
+			try {
+				//dtos = 
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("dtos",dtos);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 		
 	}
