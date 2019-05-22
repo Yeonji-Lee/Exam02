@@ -1,0 +1,9 @@
+CREATE TABLE msgtest(
+    name varchar(30),
+    msg varchar(3000)
+);
+commit;
+insert into msgtest values('√÷¿±º∫','æ»≥Á«œººø‰~');
+drop table msgtest;
+select * from msgtest
+
