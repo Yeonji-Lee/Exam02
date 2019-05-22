@@ -18,6 +18,7 @@ public class TestFrontController extends HttpServlet {
 		String reqURI = request.getRequestURI();
 		String ctxPath = request.getContextPath();
 		String cmd = reqURI.substring(ctxPath.length());
+		System.out.println(cmd);
 		
 		if(cmd.equals("/submit.test")) {
 			MemberDAO dao = new MemberDAO();

@@ -11,6 +11,7 @@
 	<input type="text" name="name">
 	<input type="text" name="msg">
 	<button>제출</button>
+	<input type=button value="목록">
 	</form>
 </body>
 </html>

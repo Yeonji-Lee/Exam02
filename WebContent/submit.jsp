@@ -11,9 +11,12 @@
 	<script>
 	if(${result > 0}){
 		alert("성공 했습니다.");
+		location.href="index.jsp";
 	}else{
 		alert("실패 했습니다.");
+		location.href="index.jsp";
 	}
+	
 	</script>
 </body>
 </html>
