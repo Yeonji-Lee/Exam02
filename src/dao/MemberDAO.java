@@ -16,7 +16,7 @@ public class MemberDAO {
 		String pw = "kh";
 		return DriverManager.getConnection(url, user, pw);
 	}
-	public int isEmailExist(MemberDTO dto)throws Exception {
+	public int insert(MemberDTO dto)throws Exception {
 		String sql = "insert into msgtest values(?,?)";
 		try(
 				Connection con = this.getConnection();
