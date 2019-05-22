@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.MemberDTO;
 
@@ -32,4 +35,23 @@ public class MemberDAO {
 			}
 		}
 	}
+	
+	public List<MemberDTO> SelectAll() throws Exception{
+		String sql = "select * from msgtest";
+		try(
+				Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+				ResultSet rs = pstat.executeQuery();
+				List<MemberDTO> result = new ArrayList<MemberDTO>();
+				while(rs.next()) {
+					MemberDTO dto = new MemberDTO();
+					dto.setName(rs.getString(1));
+					dto.setMsg(rs.getString(2));
+					result.add(dto);
+				}
+				return result;
+		}
+	}
+	
 }
