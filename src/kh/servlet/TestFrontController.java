@@ -16,7 +16,7 @@ public class TestFrontController extends HttpServlet {
 		String ctxPath = request.getContextPath();
 		String cmd = reqURI.substring(ctxPath.length());
 		
-		if(cmd.equals("")) {
+		if(cmd.equals("/submit.test")) {
 			
 		}
 		

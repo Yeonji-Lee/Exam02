@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="submit.test">
+	<form action="submit.test" method="post">
 	<input type="text" name="name">
 	<input type="text" name="msg">
 	<button>Á¦Ãâ</button>
