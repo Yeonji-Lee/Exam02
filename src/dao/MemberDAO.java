@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.JoinMemberDTO;
 import dto.MemberDTO;
 
 public class MemberDAO {
@@ -36,7 +37,7 @@ public class MemberDAO {
 		}
 	}
 	
-	public List<MemberDTO> SelectAll() throws Exception{
+	public List<MemberDTO> selectAll() throws Exception{
 		String sql = "select * from msgtest";
 		try(
 				Connection con = this.getConnection();
@@ -51,6 +52,21 @@ public class MemberDAO {
 					result.add(dto);
 				}
 				return result;
+		}
+	}
+	public int inputMember(JoinMemberDTO dto)throws Exception{
+		String sql = "insert into testMember values(?,?,?,?)";
+		try(
+				Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+			){
+			pstat.setString(1,dto.getId());
+			pstat.setString(2,dto.getPw());
+			pstat.setString(3,dto.getName());
+			pstat.setString(4,dto.getEmail());
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
 		}
 	}
 	

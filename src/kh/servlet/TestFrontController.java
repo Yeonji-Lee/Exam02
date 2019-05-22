@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
+import dto.JoinMemberDTO;
 import dto.MemberDTO;
 
 
@@ -21,10 +22,9 @@ public class TestFrontController extends HttpServlet {
 		String reqURI = request.getRequestURI();
 		String ctxPath = request.getContextPath();
 		String cmd = reqURI.substring(ctxPath.length());
-		System.out.println(cmd);
+		MemberDAO dao = new MemberDAO();
 		
 		if(cmd.equals("/submit.test")) {
-			MemberDAO dao = new MemberDAO();
 			String name = request.getParameter("name");
 			String msg = request.getParameter("msg");
 			try {
@@ -36,15 +36,31 @@ public class TestFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(cmd.equals("/list.test")) {
-			MemberDAO dao = new MemberDAO();
 			List<MemberDTO> dtos = new ArrayList<>();
 			try {
-				//dtos = 
+				dtos = dao.selectAll();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 			request.setAttribute("dtos",dtos);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("list.jsp").forward(request, response);
+		}else if(cmd.equals("/join.test")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			try {
+				if(dao.inputMember(new JoinMemberDTO(id,pw,name,email))>0){
+					request.setAttribute("result","성공");
+					request.getRequestDispatcher("join.jsp").forward(request, response);
+				}else {
+					request.setAttribute("result","실패");
+					request.getRequestDispatcher("join.jsp").forward(request, response);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}

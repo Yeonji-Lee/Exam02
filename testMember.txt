@@ -1,0 +1,10 @@
+create table testMember(
+    id varchar(30) PRIMARY key,
+    pw varchar(100),
+    name varchar(20),
+    email varchar(50)
+);
+commit;
+insert into testMember values('a','a','a','asdads@naver.com');
+drop table testMember;
+select * from testMember;
