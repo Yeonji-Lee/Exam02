@@ -52,10 +52,10 @@ public class TestFrontController extends HttpServlet {
 			try {
 				if(dao.inputMember(new JoinMemberDTO(id,pw,name,email))>0){
 					request.setAttribute("result","성공");
-					request.getRequestDispatcher("join.jsp").forward(request, response);
+					request.getRequestDispatcher("joinview.jsp").forward(request, response);
 				}else {
 					request.setAttribute("result","실패");
-					request.getRequestDispatcher("join.jsp").forward(request, response);
+					request.getRequestDispatcher("joinview.jsp").forward(request, response);
 				}
 			}catch(Exception e) {
 				e.printStackTrace();

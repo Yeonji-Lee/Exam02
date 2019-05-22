@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<input type="button" value="회원가입" id="joinbtn">
 	<script>
-		document.getElementById("joinbtn").onclick=function(){
-			location.href="joinForm.jsp";
-		}
-	
+		if("${result}" == "성공" ){
+				alert("${result}");
+				location.href="index.jsp";
+			}else if("${result}" == "실패"){
+				alert("${result}");
+				location.href="join.jsp";
+			}
 	</script>
 </body>
 </html>
